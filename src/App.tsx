@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen py-2'>
-      <div className='h-1/2 flex flex-row gap-4'>
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="h-1/2 flex flex-row gap-4">
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -15,9 +15,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1 className='text-2xl'>Vite + React</h1>
+      <h1 className="text-2xl">Vite + React</h1>
       <div className="flex flex-col items-center justify-center gap-4">
-        <button onClick={() => setCount((count) => count + 1)} className='px-2 py-1 bg-slate-200  rounded border border-slate-300'>
+        <button
+          onClick={() => setCount((count) => count + 1)}
+          className="px-2 py-1 bg-slate-200  rounded border border-slate-300"
+        >
           count is {count}
         </button>
         <p>
@@ -28,7 +31,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
