@@ -26,7 +26,8 @@
 #### Components to build:
 
 - ✅ `Card` - A flexible component that can display Pokemon, abilities, or items
-- ✅ `Button` - A generic button component that can be reused across the platform
+  - Pokemon card must have these elements: Id, Name, ImageUrl, Type
+- ✅ `Button` - A generic button component that can be reused across the platform (variants: primary and secondary)
 - ✅ `Badge` - A small UI component to display Pokemon types (e.g., Fire, Water)
 
 #### Bonus Challenge:
