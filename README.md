@@ -1,4 +1,16 @@
-# React Workshop 2025
+# React Workshop 2025'
+
+## Requirements:
+
+- nvm (windows): https://github.com/coreybutler/nvm-windows
+
+## Setup
+
+1. nvm install
+2. nvm use
+3. npm install
+4. npm run dev (starts application)
+5. npm run storbook (launch components library using storybook)
 
 ## Module 1: Introduction to React and Vite
 
