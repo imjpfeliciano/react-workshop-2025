@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# React Workshop 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Module 1: Introduction to React and Vite
 
-Currently, two official plugins are available:
+### Challenge:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create the base layout for a Pokemon web platform using reusable components.
+- Structure the app with `header`, `sidebar` and `main content area`.
 
-## Expanding the ESLint configuration
+#### Components to build:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- ✅ `Header` - Displays the platform title and navigation menu
+- ✅ `Sidebar` - Contains category buttons like "Pokedex", "Abilities", and "Items"
+- ✅ `MainLayout` - A wrapper that arrenges the header, sidebar, and content area
 
-- Configure the top-level `parserOptions` property like this:
+#### Bonus Challenge:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Make the layout responsive using Tailwind CSS
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Module 2: JSX and Components
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Challenge:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Create reusable UI components for the Pokemon platform, focusing on reusability and composition.
+
+#### Components to build:
+
+- ✅ `Card` - A flexible component that can display Pokemon, abilities, or items
+- ✅ `Button` - A generic button component that can be reused across the platform
+- ✅ `Badge` - A small UI component to display Pokemon types (e.g., Fire, Water)
+
+#### Bonus Challenge:
+
+- Implement a `Grid` component that organizes Pokemon cards dinamically
+
+## Module 3: Component-Driven Development with Storybook
+
+### Challenge:
+
+- Document all reusable components in Storybook to visualize their variations.
+
+#### Storybook stories to create:
+
+- ✅ `Card` - Show different content (Pokemon, abilities, items)
+- ✅ `Button` - Display primary, secondary, and disabled status
+- ✅ `Badge` - Showcase different Pokemon type colors
+
+#### Bonus challenge:
+
+- Use storybook controls to toggle button sizes, colors, and labels
