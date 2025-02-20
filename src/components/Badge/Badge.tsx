@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 interface BadgeProps {
-  pokemonType: "fire" | "water" | "grass" | "electric";
+  pokemonType: string;
 }
 
 const typeColors = {

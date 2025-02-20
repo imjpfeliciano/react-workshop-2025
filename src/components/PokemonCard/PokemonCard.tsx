@@ -1,7 +1,7 @@
+import { Pokemon } from "../../api/pokemons";
 import { buildPokemonImageUrl } from "../../utils/buildPokemonImageUrl";
 import Badge from "../Badge/Badge";
 import Card from "../Card/Card";
-import { Pokemon } from "../Content";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
@@ -20,7 +20,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
           <h2 className="font-bold">{pokemon.name}</h2>
           <p>#{pokemon.id}</p>
 
-          <Badge pokemonType={pokemon.type} />
+          <Badge pokemonType={pokemon.type[0]} />
         </div>
       </div>
     </Card>
