@@ -1,24 +1,10 @@
-import clsx from "clsx";
-import Text from "../Text";
+interface HeaderProps {}
 
-interface HeaderProps {
-  variant?: "primary" | "secondary";
-  size?: number;
-  label?: string;
-}
-
-const Header: React.FC<HeaderProps> = ({
-  variant = "primary",
-  label = "Header",
-}) => {
-  const colorMapping = {
-    primary: "bg-red-500",
-    secondary: "bg-orange-500",
-  };
-
+const Header: React.FC<HeaderProps> = () => {
   return (
-    <div className={clsx("col-span-12 row-span-1", colorMapping[variant])}>
-      <Text label={label} />
+    <div className="flex flex-row justify-between items-center p-4 shadow-md bg-indigo-950 text-white">
+      <div>Title</div>
+      <div>Nav items</div>
     </div>
   );
 };
