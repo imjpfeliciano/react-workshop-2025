@@ -4,6 +4,20 @@ export interface Pokemon {
   type: string[];
 }
 
+export const getPokemonTypes = () => {
+  const types: string[] = [];
+  pokemonList.forEach((pokemon) => {
+    pokemon.type.forEach((type) => {
+      if (!types.includes(type)) {
+        types.push(type);
+      }
+    });
+  });
+
+  types.push("All");
+  return types;
+};
+
 export const pokemonList: Pokemon[] = [
   {
     id: 1,

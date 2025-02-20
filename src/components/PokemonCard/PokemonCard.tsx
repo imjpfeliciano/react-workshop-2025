@@ -7,24 +7,27 @@ interface PokemonCardProps {
   pokemon: Pokemon;
 }
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
-  return (
-    <Card>
-      <div className="flex flex-col items-center justify-center overflow-hidden m-auto text-center">
-        <img
-          src={buildPokemonImageUrl(pokemon.id)}
-          alt={pokemon.name}
-          className="w-20 h-20"
-        />
-        <div className="ml-4">
-          <h2 className="font-bold">{pokemon.name}</h2>
-          <p>#{pokemon.id}</p>
+// Stateless component
+const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => (
+  <Card>
+    <div className="flex flex-col items-center justify-center overflow-hidden m-auto text-center">
+      <img
+        src={buildPokemonImageUrl(pokemon.id)}
+        alt={pokemon.name}
+        className="w-20 h-20"
+      />
+      <div className="ml-4">
+        <h2 className="font-bold">{pokemon.name}</h2>
+        <p>#{pokemon.id}</p>
 
-          <Badge pokemonType={pokemon.type[0]} />
+        <div className="flex grow">
+          {pokemon.type.map((pokemonType) => (
+            <Badge pokemonType={pokemonType.toLocaleLowerCase()} />
+          ))}
         </div>
       </div>
-    </Card>
-  );
-};
+    </div>
+  </Card>
+);
 
 export default PokemonCard;
