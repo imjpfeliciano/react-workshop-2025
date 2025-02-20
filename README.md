@@ -61,3 +61,9 @@
 #### Bonus challenge:
 
 - Use storybook controls to toggle button sizes, colors, and labels
+
+## Module 4: Stateless and stateful components
+
+### Bonus challenge:
+
+- Create a search bar component to filter the list of pokemons based on their names

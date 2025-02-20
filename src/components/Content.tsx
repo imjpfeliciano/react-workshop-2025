@@ -13,14 +13,22 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
   const [selectedPokemon, setSelectedPokemon] = useState(1);
   const [typesToShow, setTypesToShow] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
   const { isOpen: modalOpen, openModal, closeModal } = useModal();
 
   const typeList = getPokemonTypes();
 
   let filteredPokemonList = listItems;
+
   if (typesToShow !== "all") {
     filteredPokemonList = listItems.filter((pokemon) =>
       pokemon.type.includes(typesToShow)
+    );
+  }
+
+  if (searchTerm.length > 0) {
+    filteredPokemonList = filteredPokemonList.filter((pokemon) =>
+      pokemon.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
     );
   }
 
@@ -29,29 +37,31 @@ const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
     openModal();
   };
 
-  if (filteredPokemonList.length === 0) {
-    return (
-      <div className="col-span-10 p-4">
-        <div className="flex justify-center items-center h-full">
-          <p className="text-2xl text-gray-500">No Pokemon found</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="col-span-10 p-4">
-      <select onChange={(e) => setTypesToShow(e.target.value)}>
-        <option value="all">All</option>
-        {typeList.map((type) => (
-          <option key={type} value={type}>
-            {type}
-          </option>
-        ))}
-      </select>
+      <div className="flex flex-row justify-between items-center gap-4">
+        {/* search pokemon by name */}
+        <input
+          type="text"
+          placeholder="Search Pokemon"
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+
+        <select onChange={(e) => setTypesToShow(e.target.value)}>
+          <option value="all">All</option>
+          {typeList.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <p>Selected pokemon id: {selectedPokemon}</p>
       <p>Selecte type: {typesToShow}</p>
+      <p>Search term: {searchTerm}</p>
 
       <Modal isOpen={modalOpen} onClose={closeModal}>
         <PokemonModalContent
@@ -65,11 +75,22 @@ const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
 
       {/* Lista de Pokemon */}
       <div className="grid grid-cols-5 gap-2">
-        {filteredPokemonList.map((pokemon) => (
-          <div key={pokemon.id} onClick={() => handlePokemonClick(pokemon.id)}>
-            <PokemonCard pokemon={pokemon} />
+        {filteredPokemonList.length > 0 ? (
+          filteredPokemonList.map((pokemon) => (
+            <div
+              key={pokemon.id}
+              onClick={() => handlePokemonClick(pokemon.id)}
+            >
+              <PokemonCard pokemon={pokemon} />
+            </div>
+          ))
+        ) : (
+          <div className="col-span-10 p-4">
+            <div className="flex justify-center items-center h-full">
+              <p className="text-2xl text-gray-500">No Pokemon found</p>
+            </div>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

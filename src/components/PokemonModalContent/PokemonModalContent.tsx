@@ -26,7 +26,7 @@ const PokemonModalContent: React.FC<PokemonModalContentProps> = ({
       </div>
 
       {isValidating && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center opacity-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10 flex justify-center items-center opacity-10">
           <p className="text-white">Validating...</p>
         </div>
       )}
