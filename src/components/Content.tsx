@@ -39,9 +39,10 @@ const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
 
   return (
     <div className="col-span-10 p-4">
-      <div className="flex flex-row justify-between items-center gap-4">
+      <div className="flex flex-row justify-between items-center gap-4 pb-4">
         {/* search pokemon by name */}
         <input
+          className="p-2 border border-gray-300 rounded-md grow"
           type="text"
           placeholder="Search Pokemon"
           onChange={(event) => {
@@ -49,7 +50,11 @@ const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
           }}
         />
 
-        <select onChange={(e) => setTypesToShow(e.target.value)}>
+        <label className="text-gray-500">Filter by type:</label>
+        <select
+          onChange={(e) => setTypesToShow(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md grow-0"
+        >
           <option value="all">All</option>
           {typeList.map((type) => (
             <option key={type} value={type}>
@@ -58,10 +63,6 @@ const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
           ))}
         </select>
       </div>
-
-      <p>Selected pokemon id: {selectedPokemon}</p>
-      <p>Selecte type: {typesToShow}</p>
-      <p>Search term: {searchTerm}</p>
 
       <Modal isOpen={modalOpen} onClose={closeModal}>
         <PokemonModalContent
