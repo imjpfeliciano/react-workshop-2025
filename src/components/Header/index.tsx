@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Text from "../Text";
 
 interface HeaderProps {
@@ -16,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <div className={colorMapping[variant]}>
+    <div className={clsx("col-span-12 row-span-1", colorMapping[variant])}>
       <Text label={label} />
     </div>
   );

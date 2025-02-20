@@ -3,7 +3,7 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => (
-  <div className="bg-blue-500 h-screen w-screen">{children}</div>
+  <div className="w-screen h-screen flex flex-col gap-4">{children}</div>
 );
 
 export default MainLayout;
