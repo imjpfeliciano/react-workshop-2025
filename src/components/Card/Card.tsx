@@ -3,7 +3,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ children }) => (
-  <div className="bg-white shadow-md p-4 flex grow">{children}</div>
+  <div className="bg-white shadow-md p-4 flex grow rounded">{children}</div>
 );
 
 export default Card;

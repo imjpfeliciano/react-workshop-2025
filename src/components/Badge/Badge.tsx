@@ -14,7 +14,7 @@ const typeColors = {
 const Badge: React.FC<BadgeProps> = ({ pokemonType }) => (
   <div
     className={clsx(
-      "px-2 py-1 rounded-full text-xs capitalize",
+      "inline-flex items-center px-2 py-1 rounded-full text-xs capitalize",
       typeColors[pokemonType]
     )}
   >
