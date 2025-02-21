@@ -62,8 +62,41 @@
 
 - Use storybook controls to toggle button sizes, colors, and labels
 
-## Module 4: Stateless and stateful components
+## Module 4: State management with hooks
+
+### Bonus challenge:
+
+- Create a custom hook `useModal` to keep track of the status of the modal, if the user clicks on
+  a pokemon card, then display the details on the modal component
+
+## Module 5: Handling events and forms
 
 ### Bonus challenge:
 
 - Create a search bar component to filter the list of pokemons based on their names
+
+## Module 6: React router and Navigation
+
+- Challenge: Create router component for the following sections
+  - `/` - Displays the list of all pokemons
+  - `/pokemon/:id` - Display information about the pokemon with the specified id
+    - If the pokemon with `:id` is not found, redirect to `404`
+  - `/items` - Display all available items (use `api/items.ts` list)
+  - `/items/:id` - Display information about the specified item
+    - If the item with `:id` is not found, redirect to `404`
+  - `/404` - Show not found page
+
+### Bonus challenge
+
+- Set the items on the sidebar active according to the page selected
+  - pokemon is active is the route is `/` or `/pokemon/:id`
+  - items is active is the route is `/items` or `/items/:id`
+
+## Module 7: Fetching Data from APIs
+
+- Challenge: Fetch real pokemon data and display in the `/` pokemons page, if the user clicks on any pokemon, then display more information about the selected pokemon
+
+## Bonus challenge
+
+- Handle loading states
+- Optimize queries using TanStack Query for efficient data fetching and caching
