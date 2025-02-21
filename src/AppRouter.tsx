@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
+import { MainLayout } from "./components";
 import ItemsPage from "./pages/ItemsPage";
 import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 import PokemonPage from "./pages/PokemonPage";
@@ -37,14 +38,16 @@ const routesMapping: RouteItem[] = [
 
 const AppRouter = () => (
   <Routes>
-    {routesMapping.map((item) => {
-      if (item.visible === false) return null;
+    <Route element={<MainLayout />}>
+      {routesMapping.map((item) => {
+        if (item.visible === false) return null;
 
-      return (
-        <Route path={item.path} element={item.element} key={item.pathName} />
-      );
-    })}
-    <Route path="*" element={<Navigate to="/" />} />
+        return (
+          <Route path={item.path} element={item.element} key={item.pathName} />
+        );
+      })}
+      <Route path="*" element={<Navigate to="/" />} />
+    </Route>
   </Routes>
 );
 
