@@ -21,7 +21,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => (
         <p>#{pokemon.id}</p>
 
         <div className="flex grow">
-          {pokemon.type.map((pokemonType) => (
+          {pokemon.type?.map((pokemonType) => (
             <Badge pokemonType={pokemonType.toLocaleLowerCase()} />
           ))}
         </div>

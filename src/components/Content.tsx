@@ -1,41 +1,35 @@
 import { useState } from "react";
-import { getPokemonTypes, Pokemon, pokemonList } from "../api/pokemons";
-import useModal from "../hooks/useModal";
-import Modal from "./Modal/Modal";
+import { Link } from "react-router";
+import { getPokemonTypes } from "../api/pokemons";
+import { usePokemonsQuery } from "../queries/usePokemonsQuery";
 import PokemonCard from "./PokemonCard/PokemonCard";
-import PokemonModalContent from "./PokemonModalContent/PokemonModalContent";
 
 interface ContentProps {
-  listItems?: Pokemon[];
+  // listItems?: Pokemon[];
 }
 
 // Stateful component
-const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
-  const [selectedPokemon, setSelectedPokemon] = useState(1);
+const Content: React.FC<ContentProps> = () => {
+  const { data, isLoading } = usePokemonsQuery();
+
   const [typesToShow, setTypesToShow] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const { isOpen: modalOpen, openModal, closeModal } = useModal();
 
   const typeList = getPokemonTypes();
 
-  let filteredPokemonList = listItems;
+  let filteredPokemonList = data;
 
   if (typesToShow !== "all") {
-    filteredPokemonList = listItems.filter((pokemon) =>
-      pokemon.type.includes(typesToShow)
+    filteredPokemonList = data?.filter((pokemon) =>
+      pokemon.type?.includes(typesToShow)
     );
   }
 
   if (searchTerm.length > 0) {
-    filteredPokemonList = filteredPokemonList.filter((pokemon) =>
+    filteredPokemonList = filteredPokemonList?.filter((pokemon) =>
       pokemon.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
     );
   }
-
-  const handlePokemonClick = (id: number) => {
-    setSelectedPokemon(id);
-    openModal();
-  };
 
   return (
     <div className="col-span-10 p-4">
@@ -64,26 +58,13 @@ const Content: React.FC<ContentProps> = ({ listItems = pokemonList }) => {
         </select>
       </div>
 
-      <Modal isOpen={modalOpen} onClose={closeModal}>
-        <PokemonModalContent
-          pokemon={
-            pokemonList.find(
-              (pokemon) => pokemon.id === selectedPokemon
-            ) as Pokemon
-          }
-        />
-      </Modal>
-
       {/* Lista de Pokemon */}
       <div className="grid grid-cols-5 gap-2">
-        {filteredPokemonList.length > 0 ? (
-          filteredPokemonList.map((pokemon) => (
-            <div
-              key={pokemon.id}
-              onClick={() => handlePokemonClick(pokemon.id)}
-            >
+        {!isLoading && filteredPokemonList && filteredPokemonList.length > 0 ? (
+          filteredPokemonList?.map((pokemon) => (
+            <Link to={`/pokemon/${pokemon.id}`}>
               <PokemonCard pokemon={pokemon} />
-            </div>
+            </Link>
           ))
         ) : (
           <div className="col-span-10 p-4">

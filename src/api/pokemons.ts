@@ -1,13 +1,13 @@
 export interface Pokemon {
   id: number;
   name: string;
-  type: string[];
+  type?: string[];
 }
 
 export const getPokemonTypes = () => {
   const types: string[] = [];
   pokemonList.forEach((pokemon) => {
-    pokemon.type.forEach((type) => {
+    pokemon.type?.forEach((type) => {
       if (!types.includes(type)) {
         types.push(type);
       }
