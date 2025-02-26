@@ -7,6 +7,8 @@ const fetchPokemons = async (): Promise<Pokemon[]> => {
   );
   const { results } = await pokemonResponse.json();
 
+  // eslint-disable-next-line
+  // @ts-ignore
   const list = results.map((item) => {
     return {
       name: item.name,

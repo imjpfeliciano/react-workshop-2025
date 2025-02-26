@@ -5,12 +5,8 @@ import { useTeamContext } from "../context/teamContext";
 import { usePokemonsQuery } from "../queries/usePokemonsQuery";
 import PokemonCard from "./PokemonCard/PokemonCard";
 
-interface ContentProps {
-  // listItems?: Pokemon[];
-}
-
 // Stateful component
-const Content: React.FC<ContentProps> = () => {
+const Content: React.FC = () => {
   const { data, isLoading } = usePokemonsQuery();
   const { isTeamMember } = useTeamContext();
 

@@ -22,7 +22,7 @@ const PokemonModalContent: React.FC<PokemonModalContentProps> = ({
       <div>
         <h1>{pokemon.name}</h1>
         <img src={buildPokemonImageUrl(pokemon.id)} alt={pokemon.name} />
-        <p>Types: {pokemon.type.join(", ")}</p>
+        <p>Types: {pokemon.type?.join(", ")}</p>
       </div>
 
       {isValidating && (

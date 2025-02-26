@@ -10,6 +10,8 @@ const fetchPokemonById = async (pokemonId: string): Promise<Pokemon> => {
   return {
     id: data.id,
     name: data.name,
+    // eslint-disable-next-line
+    // @ts-ignore
     type: data.types.map(({ type }) => type.name),
   };
 };

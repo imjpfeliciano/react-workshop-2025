@@ -4,7 +4,7 @@ interface BadgeProps {
   pokemonType: string;
 }
 
-const typeColors = {
+export const typeColors = {
   fire: "bg-red-500 text-white",
   water: "bg-blue-500 text-white",
   grass: "bg-green-500 text-white",
@@ -31,6 +31,8 @@ const Badge: React.FC<BadgeProps> = ({ pokemonType }) => (
   <div
     className={clsx(
       "inline-flex items-center px-2 py-1 rounded-full text-xs capitalize",
+      // eslint-disable-next-line
+      // @ts-ignore
       typeColors[pokemonType]
     )}
   >

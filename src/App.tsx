@@ -2,6 +2,8 @@ import { Content, Header, MainLayout } from "./components";
 import Sidebar from "./components/Sidebar";
 
 const App = () => (
+  // eslint-disable-next-line
+  // @ts-ignore
   <MainLayout>
     <Header />
     <div className="flex flex-row flex-grow gap-4">

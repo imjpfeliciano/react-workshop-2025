@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-const MainLayout: React.FC = () => (
+const MainLayout = () => (
   <div className="w-screen h-screen flex flex-col bg-slate-50">
     <Header />
     <div className="flex flex-row flex-grow gap-4">

@@ -16,7 +16,7 @@ export const Default: Story = {
     pokemon: {
       id: 1,
       name: "Bulbasaur",
-      type: "grass",
+      type: ["grass"],
     },
   },
 };
