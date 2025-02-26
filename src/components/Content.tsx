@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { getPokemonTypes } from "../api/pokemons";
+import { useTeamContext } from "../context/teamContext";
 import { usePokemonsQuery } from "../queries/usePokemonsQuery";
 import PokemonCard from "./PokemonCard/PokemonCard";
 
@@ -11,6 +12,7 @@ interface ContentProps {
 // Stateful component
 const Content: React.FC<ContentProps> = () => {
   const { data, isLoading } = usePokemonsQuery();
+  const { isTeamMember } = useTeamContext();
 
   const [typesToShow, setTypesToShow] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
@@ -62,8 +64,11 @@ const Content: React.FC<ContentProps> = () => {
       <div className="grid grid-cols-5 gap-2">
         {!isLoading && filteredPokemonList && filteredPokemonList.length > 0 ? (
           filteredPokemonList?.map((pokemon) => (
-            <Link to={`/pokemon/${pokemon.id}`}>
-              <PokemonCard pokemon={pokemon} />
+            <Link to={`/pokemon/${pokemon.id}`} key={pokemon.id}>
+              <PokemonCard
+                pokemon={pokemon}
+                isFavorite={isTeamMember(String(pokemon.id))}
+              />
             </Link>
           ))
         ) : (

@@ -16,7 +16,10 @@ const PokemonDetailsCard: React.FC = () => {
 
       {pokemon && (
         <div className="w-[500px]">
-          <PokemonCard pokemon={pokemon} />
+          <PokemonCard
+            pokemon={pokemon}
+            isFavorite={isTeamMember(String(pokemon.id))}
+          />
           <div className="flex justify-between">
             {isTeamMember(pokemonId!) ? (
               <button

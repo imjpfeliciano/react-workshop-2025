@@ -1,20 +1,22 @@
 import { Pokemon } from "../../api/pokemons";
-import { useTeamContext } from "../../context/teamContext";
 import { buildPokemonImageUrl } from "../../utils/buildPokemonImageUrl";
 import Badge from "../Badge/Badge";
 import Card from "../Card/Card";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
+  isFavorite?: boolean;
 }
 
 // Stateless component
-const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
-  const { isTeamMember } = useTeamContext();
+const PokemonCard: React.FC<PokemonCardProps> = ({
+  pokemon,
+  isFavorite = false,
+}) => {
   return (
     <Card>
       <div className="flex flex-col items-center justify-center overflow-hidden m-auto text-center relative">
-        {isTeamMember(String(pokemon.id)) && (
+        {isFavorite && (
           <div className="absolute top-0 right-0">
             <div className="bg-yellow-300 h-5 w-5 rounded-full">*</div>
           </div>
@@ -30,7 +32,10 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
 
           <div className="flex grow">
             {pokemon.type?.map((pokemonType) => (
-              <Badge pokemonType={pokemonType.toLocaleLowerCase()} />
+              <Badge
+                pokemonType={pokemonType.toLocaleLowerCase()}
+                key={pokemonType}
+              />
             ))}
           </div>
         </div>
