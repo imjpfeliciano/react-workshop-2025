@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 
 import AppRouter from "./AppRouter";
+import TeamContextProvider from "./context/teamContext";
 
 const root = createRoot(document.getElementById("root")!);
 
@@ -13,7 +14,9 @@ root.render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <AppRouter />
+        <TeamContextProvider>
+          <AppRouter />
+        </TeamContextProvider>
       </BrowserRouter>
     </QueryClientProvider>
   </StrictMode>

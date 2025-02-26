@@ -29,8 +29,8 @@ const routesMapping: RouteItem[] = [
     element: <PokemonDetailsPage />,
   },
   {
-    path: "/items",
-    pathName: "pokemon-items",
+    path: "/favorites",
+    pathName: "favorites-page",
     element: <ItemsPage />,
     visible: Boolean(roles.includes("can-see-items")),
   },

@@ -25,9 +25,9 @@ const MockSidebarItems: SidebarItem[] = [
 
 if (roles.includes("can-see-items")) {
   MockSidebarItems.push({
-    title: "Items",
-    icon: "items",
-    route: "/items",
+    title: "Favorites",
+    icon: "favorites",
+    route: "/favorites",
   });
 }
 
